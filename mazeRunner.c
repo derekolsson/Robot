@@ -5,7 +5,7 @@
 #include "ping.h"                             // Incluir ping para sensor
 
 //Advance = 1, go back = 0
-int advance = 1;                               
+int advance;                               
 
 /*
 	map[count][direction]
@@ -35,7 +35,7 @@ void goBack();
 int main()                                  // main 
 {
 	count = 0;
-
+	advance = 1;
 
 	  for(;;){									//endless loop
 		while (advance == 1){					//if advancing
