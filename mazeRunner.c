@@ -1,7 +1,7 @@
 
 
 #include "simpletools.h"                      // incluir simpletools para controladores de la placa
-#include "abdrive.h"                          // Inckuir abdrive para encoders y servos
+#include "abdrive.h"                          // Incluir abdrive para encoders y servos
 #include "ping.h"                             // Incluir ping para sensor
 
 //Advance = 1, go back = 0
@@ -9,7 +9,7 @@ int advance;
 
 /*
 	map[count][direction]
-	directions:	0 = forward
+	directions:	0 = forward, the direction AB entered from
 				1 = left
 				2 = right
 */				
@@ -160,14 +160,14 @@ checkSpace(){		//Check each space for straight, left then right
 	
 void 
 turnLeft(){
-	drive_goto(26, -25);
+	drive_goto(-26, 25);
     pause(250);
 	return;
 }
 	
 void 
 turnRight(){
-	drive_goto(-26, 25);
+	drive_goto(26, -25);
     pause(250);
 	return;
 }
