@@ -9,11 +9,12 @@ int advance;
 
 /*
 	map[cont][direction]
-	directions:	0 = forward, the direction AB entered from
-				1 = left
-				2 = right
+	directions:	0 = forward, the direction ActivityBot entered from
+				1 = left (relative)
+				2 = right (relative)
 */				
-int map[500][3];							  
+int map[1000][3];							  
+
 //which "section" we are in
 int cont;
 
@@ -134,9 +135,9 @@ int main()                                  // main
 }
 
 int			
-checkWall(){		//If there's a wall within 5cm, return 1, else 0
+checkWall(){		//If there's a wall within 7cm, return 1, else 0
 
-	if (ping_cm(8) < 5){
+	if (ping_cm(8) < 7){
 		return 1;
 	}
 	else{
@@ -149,6 +150,7 @@ checkSpace(int i){		//Check each space for straight, left then right
 	map[i][0] = checkWall();
 	
 	turnLeft();
+	
 	
 	map[i][1] = checkWall();
 	
