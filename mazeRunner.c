@@ -21,7 +21,7 @@ int cont;
 //will check for openings (0 open, 1 closed)
 int checkWall();
 //checks straight, left then right
-void checkSpace();
+void checkSpace(int);
 
 //turn left, right or 180 degrees upon itself
 void turnLeft();
