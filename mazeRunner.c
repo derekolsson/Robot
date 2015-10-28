@@ -13,7 +13,7 @@ int advance;
 				1 = left
 				2 = right
 */				
-int map[500][2];							  
+int map[500][3];							  
 //which "section" we are in
 int cont;
 
