@@ -182,14 +182,14 @@ turnAround(){
 
 void 
 goForward(){
-	drive_goto(65,64);
+	drive_goto(25,25);
 	pause(250);
 	return;
 }
 
 void 
 goBack(){
-	drive_goto(-65,-64);
+	drive_goto(-25,-25);
 	pause(250);
 	return;
 }
