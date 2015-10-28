@@ -21,7 +21,7 @@ int cont;
 //will check for openings (0 open, 1 closed)
 int checkWall();
 //checks straight, left then right
-void checkSpace(int i, int x[][]);
+void checkSpace(int i, int x[][3]);
 
 //turn left, right or 180 degrees upon itself
 void turnLeft();
@@ -35,12 +35,13 @@ void goBack();
 
 int main()                                  // main 
 {
+  int map[1000][3]={{0},{0}};
 	cont = 0;
 	advance = 1;
 
 	  while(1){									//endless loop
 		while (advance == 1){					//if advancing
-			checkSpace(cont, map[][]);						//first check the space
+        checkSpace(cont, map[1000][3]);						//first check the space
 			
 			//priority to go: Right, Straight, Left
 			//after, increment counter
@@ -146,17 +147,17 @@ checkWall(){		//If there's a wall within 7cm, return 1, else 0
 }
 
 void
-checkSpace(int i, int x[][]){		//Check each space for straight, left then right
-	map[i][0] = checkWall();
+checkSpace(int i, int x[][3]){		//Check each space for straight, left then right
+	x[i][0] = checkWall();
 	
 	turnLeft();
 	
 	
-	map[i][1] = checkWall();
+	x[i][1] = checkWall();
 	
 	turnAround();
 	
-	map[i][2]= checkWall();
+	x[i][2]= checkWall();
 	
 	return;
 	}
