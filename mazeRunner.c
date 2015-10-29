@@ -68,7 +68,19 @@ int main()                                  // main
 				turnLeft();
 				cont = cont - 1;
 				goBack();
-				map [cont][0]=;0
+				else if (map[cont][2]==0){
+					map [cont][2]=1;
+					turnLeft();
+				}
+				
+				else if (map[cont][0]==0){
+					map [cont][2]=1;
+				}
+				
+				else if (map[cont][1]==0){
+					map [cont][2]=1;
+					turnRight();
+				}
 				advance = 0;
 			}
 		}

@@ -90,7 +90,8 @@ int main()                                  // main
 			
 			//decrement cont to see prior space
 			cont = cont - 1;
-			//check in order: Right, Forward, Left from last space
+			
+			//check in order: Straight, Left, Right from last space
 			//turn so back facing opening, then go backwards
 			//"close" direction you came from
 			
