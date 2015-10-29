@@ -70,6 +70,17 @@ int main()                                  // main
 			else{
 				cont = cont - 1;
 				goBack();
+          if (map[cont][0] == 0){
+            map[cont][0] = 1;
+          }
+          else if (map[cont][1] == 0){
+            turnRight();
+            map[cont][1] = 1;
+          }
+          else if (map[cont][2] == 0){
+            turnLeft();
+            map[cont][0] = 1;
+          }            
 				advance = 0;
 			}
 		}
@@ -101,21 +112,17 @@ int main()                                  // main
 				map[cont][2] == 1;
 			}
 			
-			//if no openings left, it's basically stuck, so break routine
-			else{
-				advance = 4;
-			}
 			
-			//restart advance
+			//try to restart advance
 			//tries Straight, Left, Right
-			if (map[cont][0] == 0){
-				goForward();				//go forward
-				cont = cont + 1;			//increment cont
-				advance = 1;				//restart advance loop
-			}
+			//if (map[cont][0] == 0){
+				 //goForward();				//go forward
+			   //cont = cont + 1;			//increment cont
+			   //advance = 1;				//restart advance loop
+			//}
 			
 			//left
-			else if (map[cont][1] == 0){
+			 if (map[cont][1] == 0){
 				turnLeft();
 				goForward();
 				cont = cont + 1;
@@ -151,7 +158,14 @@ checkRight(){
 	int right;
 	freqout(0,1,38000);
 	right = input(1);
-	return right;
+  if (right ==	 1){
+    high(27);
+    return 0;
+  }
+  else{
+    low(27);
+    return 1;
+  }
 }
 
 int
@@ -159,7 +173,14 @@ checkLeft(){
 	int left;
 	freqout(13,1,38000);
 	left = input(11);
-	return left;
+  if (left ==	 1){
+    high(26);
+    return 0;
+  }
+  else{
+    low(26);
+    return 1;
+  }        
 }
 
 void
