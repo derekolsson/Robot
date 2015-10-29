@@ -20,6 +20,9 @@ int cont;
 
 //will check for openings (0 open, 1 closed)
 int checkWall();
+int checkLeft();
+int checkRight();
+
 //checks straight, left then right
 void checkSpace(int i, int x[][3]);
 
@@ -46,29 +49,27 @@ int main()                                  // main
 			//priority to go: Right, Straight, Left
 			//after, increment counter
 			
-			if (map[cont][2]== 0){				
-				goForward();
-				cont = cont + 1;
-			}
-			
-			else if (map[cont][0] == 0){
-				turnLeft();
+			if (map[cont][0]== 0){				
 				goForward();
 				cont = cont + 1;
 			}
 			
 			else if (map[cont][1] == 0){
-				turnAround();
+				turnLeft();
+				goForward();
+				cont = cont + 1;
+			}
+			
+			else if (map[cont][2] == 0){
+				turnRight();
 				goForward();
 				cont = cont + 1;
 			}
 			
 			//if nothing, face "forward", return to last square, begin backwards routine
 			else{
-				turnLeft();
 				cont = cont - 1;
 				goBack();
-				map [cont][0]=;0
 				advance = 0;
 			}
 		}
@@ -82,24 +83,22 @@ int main()                                  // main
 			//turn so back facing opening, then go backwards
 			//"close" direction you came from
 			
-			//Right
-			if (map[cont][2] == 0){
-				turnLeft();			//face opening
-				goBack();			//go backwards
-				turnLeft();			//face "forward"
-				map[cont][2] == 1;	//close right
-			}
 			//Forward
-			else if (map[cont][0] == 0){
-				goBack();
-				map[cont][0] == 1;
+			if (map[cont][0] == 0){
+				goBack();			//go backwards
+				map[cont][0] == 1;	//close right
 			}
 			//Left
 			else if (map[cont][1] == 0){
-				turnRight();
 				goBack();
-				turnRight;
+				turnRight();
 				map[cont][1] == 1;
+			}
+			//Right
+			else if (map[cont][2] == 0){
+				goBack();
+				turnLeft();
+				map[cont][2] == 1;
 			}
 			
 			//if no openings left, it's basically stuck, so break routine
@@ -108,22 +107,22 @@ int main()                                  // main
 			}
 			
 			//restart advance
-			//tries right, then straight, then left
-			if (map[cont][2] == 0){
-				turnRight();				//face right
+			//tries Straight, Left, Right
+			if (map[cont][0] == 0){
 				goForward();				//go forward
 				cont = cont + 1;			//increment cont
 				advance = 1;				//restart advance loop
 			}
 			
-			//straight
-			else if (map[cont][0] == 0){
+			//left
+			else if (map[cont][1] == 0){
+				turnLeft();
 				goForward();
 				cont = cont + 1;
 				advance = 1;
 			}
-			//left
-			else if (map[cont][1] == 0){
+			//right
+			else if (map[cont][2] == 0){
 				turnRight();
 				goForward();
 				cont = cont + 1;
@@ -147,18 +146,34 @@ checkWall(){		//If there's a wall within 7cm, return 1, else 0
 	}
 }
 
+int
+checkRight(){
+	int right;
+	freqout(0,1,38000);
+	right = input(1);
+	return right;
+}
+
+int
+checkLeft(){
+	int left;
+	freqout(13,1,38000);
+	left = input(11);
+	return left;
+}
+
 void
 checkSpace(int i, int x[][3]){		//Check each space for straight, left then right
 	x[i][0] = checkWall();
 	
-	turnLeft();
+	//turnLeft();
 	
 	
-	x[i][1] = checkWall();
+	x[i][1] = checkLeft();
 	
-	turnAround();
+	//turnAround();
 	
-	x[i][2]= checkWall();
+	x[i][2]= checkRight();
 	
 	return;
 	}
